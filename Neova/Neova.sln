@@ -3,9 +3,53 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36202.13 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{21407619-82EF-466E-9887-685833CE3DC4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{B3BBEB05-BED3-4CB9-AC4C-5782644FF136}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neova.Shared.Library", "src\Shared\Neova.Shared.Library\Neova.Shared.Library.csproj", "{62C7751F-C990-A731-4A39-103BF0AF5684}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neova.Catalog.API", "src\Services\Catalog\Neova.Catalog.API\Neova.Catalog.API.csproj", "{B6BB0C1A-55EC-47E6-B8ED-209ADF97E78E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neova.Catalog.Domain", "src\Services\Catalog\Neova.Catalog.Domain\Neova.Catalog.Domain.csproj", "{C6FC36CE-FFD8-4A64-B075-B7F87EFC0E0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neova.Catalog.Application", "src\Services\Catalog\Neova.Catalog.Application\Neova.Catalog.Application.csproj", "{FF71F518-0185-4EB6-BCCD-A08A169FD936}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62C7751F-C990-A731-4A39-103BF0AF5684}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62C7751F-C990-A731-4A39-103BF0AF5684}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62C7751F-C990-A731-4A39-103BF0AF5684}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62C7751F-C990-A731-4A39-103BF0AF5684}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6BB0C1A-55EC-47E6-B8ED-209ADF97E78E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6BB0C1A-55EC-47E6-B8ED-209ADF97E78E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6BB0C1A-55EC-47E6-B8ED-209ADF97E78E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6BB0C1A-55EC-47E6-B8ED-209ADF97E78E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6FC36CE-FFD8-4A64-B075-B7F87EFC0E0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6FC36CE-FFD8-4A64-B075-B7F87EFC0E0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6FC36CE-FFD8-4A64-B075-B7F87EFC0E0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6FC36CE-FFD8-4A64-B075-B7F87EFC0E0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF71F518-0185-4EB6-BCCD-A08A169FD936}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF71F518-0185-4EB6-BCCD-A08A169FD936}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF71F518-0185-4EB6-BCCD-A08A169FD936}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF71F518-0185-4EB6-BCCD-A08A169FD936}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{21407619-82EF-466E-9887-685833CE3DC4} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{B3BBEB05-BED3-4CB9-AC4C-5782644FF136} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{62C7751F-C990-A731-4A39-103BF0AF5684} = {21407619-82EF-466E-9887-685833CE3DC4}
+		{B6BB0C1A-55EC-47E6-B8ED-209ADF97E78E} = {B3BBEB05-BED3-4CB9-AC4C-5782644FF136}
+		{C6FC36CE-FFD8-4A64-B075-B7F87EFC0E0D} = {B3BBEB05-BED3-4CB9-AC4C-5782644FF136}
+		{FF71F518-0185-4EB6-BCCD-A08A169FD936} = {B3BBEB05-BED3-4CB9-AC4C-5782644FF136}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2BC0BB02-77EC-4854-85FB-E717FCF88017}

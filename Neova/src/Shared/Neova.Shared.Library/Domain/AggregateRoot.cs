@@ -1,6 +1,6 @@
 ﻿namespace Neova.Shared.Library.Domain
 {
-    public abstract class AggregateRoot : IAggregateRoot
+    public abstract class AggregateRoot<T> : Entity<T>, IAggregateRoot where T: struct,IEquatable<T>
     {
         private readonly List<IDomainEvent> _domainEvents = new List<IDomainEvent>();
         public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
