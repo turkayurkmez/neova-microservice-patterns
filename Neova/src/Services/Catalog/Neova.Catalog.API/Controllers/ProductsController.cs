@@ -1,14 +1,16 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Neova.Catalog.Application.Features.Product.Queries.GetAllProducts;
 
 namespace Neova.Catalog.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductsController : ControllerBase
+    public class ProductsController(IMediator mediator) : ControllerBase
     {
         [HttpGet]
-        public IActionResult GetAllProducts()
+        public async Task<IActionResult> GetAllProducts()
         {
             /*
              * var request = new  DiscountProductPriceCommandRequest("sdsdsdsdsdsd",0.25);
@@ -17,7 +19,10 @@ namespace Neova.Catalog.API.Controllers
              * 
              * var rsp = arabulucu.Gonder(request);
              */
-            return Ok();
+
+            var request = new GetAllProductsRequest();
+            var response = await mediator.Send(request);
+            return Ok(response);
         }
     }
 }
