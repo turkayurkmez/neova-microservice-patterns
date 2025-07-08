@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Neova.Catalog.Application.Services
 {
+
+    //Uygulama product varlığı ile ......... yapar
+    //Uygulama kategori...........................
+
     public class ProductService : IProductService
     {
         public void CreateNewProduct() { }

@@ -38,6 +38,7 @@ namespace Neova.Catalog.Domain.Aggregates
             var oldPrice = Price;
             Price = Price * (1 - discountRate);
 
+            //Olayı oluştur ve fırlatmak üzere ekle:
             ProductPriceDiscountedDomainEvent @event = new ProductPriceDiscountedDomainEvent(this.Id, oldPrice, Price);
             AddDomainEvent(@event);
 

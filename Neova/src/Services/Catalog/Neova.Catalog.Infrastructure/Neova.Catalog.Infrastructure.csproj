@@ -6,12 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Product\Queries\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Neova.Catalog.Domain\Neova.Catalog.Domain.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -12,7 +12,8 @@ namespace Neova.Catalog.API.Controllers
         {
             /*
              * var request = new  DiscountProductPriceCommandRequest("sdsdsdsdsdsd",0.25);
-
+               var handler = new  DiscountProductPriceCommandHandler();
+               var response = handler.Handle(request);
              * 
              * var rsp = arabulucu.Gonder(request);
              */

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Neova.Shared.Library.Domain
 {
+
+    //Varlık, kendisine ait kimliği olan ve bu kimlik ile aynı türde başka varlıkla karşılaştırılabilen (eşitlik) yapılardır.
     public abstract class Entity<T>  where T : struct, IEquatable<T>
     {
         public T Id { get; protected set; }

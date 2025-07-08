@@ -1,5 +1,11 @@
 ﻿namespace Neova.Shared.Library.Domain
 {
+
+    /*
+     * Aggregate, toplu entity demektir. Başka varlıkları biraraya getirerek yöneten bir varlıktır.
+     * 
+     *  order.OrderItems.Add();
+     */
     public abstract class AggregateRoot<T> : Entity<T>, IAggregateRoot where T: struct,IEquatable<T>
     {
         private readonly List<IDomainEvent> _domainEvents = new List<IDomainEvent>();
