@@ -15,7 +15,7 @@ namespace Neova.Catalog.Application.Features.Product.Queries.GetAllProducts
         public async Task<GetAllProductsResponse> Handle(GetAllProductsRequest request, CancellationToken cancellationToken)
         {
             var products = await productRepository.GetAllAsync();
-            var dtoResult = products.ToList().Select(p => new ProductsForDisplay(p.Id, p.Price, p.Description, 1, p.ImageUrl));
+            var dtoResult = products.ToList().Select(p => new ProductsForDisplay(p.Id, p.Price, p.Description, p.CategoryId, p.ImageUrl));
             return new GetAllProductsResponse(dtoResult);
         }
     }

@@ -1,6 +1,16 @@
 @Neova.Catalog.API_HostAddress = http://localhost:5253
 
-GET {{Neova.Catalog.API_HostAddress}}/weatherforecast/
+GET {{Neova.Catalog.API_HostAddress}}/api/products
 Accept: application/json
 
 ###
+POST {{Neova.Catalog.API_HostAddress}}/api/products/discount
+Content-Type: application/json
+
+{
+  "producId": "1521c8c5-9859-4d55-a782-08949f92325a",
+  "discountRate": 0.15
+}
+
+
+

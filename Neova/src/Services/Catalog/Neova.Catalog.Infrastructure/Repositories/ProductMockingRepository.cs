@@ -26,7 +26,7 @@ namespace Neova.Catalog.Infrastructure.Repositories
             //TODO 3: 1 yerine CategoryId kullanılacak!!!!!
             return await Task.FromResult(new List<Product>() {
 
-               new Product("Test ürün", "Test açıklama",1,null,null)
+               new Product("Test ürün", "Test açıklama",1,null,null,null)
             });
         }
 

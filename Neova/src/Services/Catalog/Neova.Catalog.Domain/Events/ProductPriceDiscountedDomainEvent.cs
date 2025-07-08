@@ -1,4 +1,5 @@
-﻿using Neova.Shared.Library.Domain;
+﻿using MediatR;
+using Neova.Shared.Library.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Neova.Catalog.Domain.Events
 {
-    public class ProductPriceDiscountedDomainEvent : DomainEvent
+    public class ProductPriceDiscountedDomainEvent : DomainEvent, INotification
     {
         public Guid ProductId { get; private set; }
         public decimal OldPrice { get; private set; }

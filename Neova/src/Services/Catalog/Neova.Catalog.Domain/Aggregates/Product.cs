@@ -22,9 +22,12 @@ namespace Neova.Catalog.Domain.Aggregates
 
         public string? ImageUrl { get; set; } = "noImage.png";
 
+        public int CategoryId { get; private set; }
+        public Category Category { get; set; }
+
         public Product() { }
 
-        public Product(string name, string description, decimal price, int? stock, string? imageUrl)
+        public Product(string name, string description, decimal price, int? stock, string? imageUrl, int? categoryID)
         {
             Name = name;
             Description = description;
