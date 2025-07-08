@@ -1,10 +1,13 @@
-using Microsoft.EntityFrameworkCore;
+嚜簑sing Microsoft.EntityFrameworkCore;
 using Neova.Catalog.Application.Features.Product.Queries.GetAllProducts;
 using Neova.Catalog.Domain.Repositories;
 using Neova.Catalog.Infrastructure.EventHandlers;
 using Neova.Catalog.Infrastructure.Persistance;
 using Neova.Catalog.Infrastructure.Repositories;
 using Neova.Catalog.Infrastructure.Extensions;
+using RabbitMQ.Client;
+using MassTransit;
+using Neova.Shared.EventBus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,12 +24,31 @@ builder.Services.AddApplicationServices();
 //builder.Services.AddScoped<IProductRepository, ProductEFRepository>();
 //builder.Services.AddMediatR(config =>
 //{
-//    //IRequest, IRequestHandler ile imzalad???n nesneler aras?nda arabuluculuk yapmak �zere hepsini tara ve belle?e kaydet!
+//    //IRequest, IRequestHandler ile imzalad???n nesneler aras?nda arabuluculuk yapmak 羹zere hepsini tara ve belle?e kaydet!
 //    config.RegisterServicesFromAssemblyContaining<GetAllProductsRequest>();
 //    config.RegisterServicesFromAssemblyContaining<ProductPriceDiscountedDomainEventHandler>();
 //});
 
-//builder.Services.AddDbContext<CatalogDbContext>(opt=> opt.UseSqlServer(builder.Configuration.GetConnectionString("CatalogDb")));
+//builder.Services.AddDbContext<CatalogDbContext>(opt=> opt.UseSqlServer(builder.Configuration.GetConnectionString("CatalogDb")));,
+
+builder.Services.AddMassTransit(configurator=> 
+{
+    configurator.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host("localhost", "/", h =>
+        {
+            h.Username("guest");
+            h.Password("guest");
+        });
+
+        cfg.Publish<ProductPriceDiscountedEvent>(x =>
+        {
+            x.Durable = true; // Mesaj kal覺c覺 olsun
+            x.AutoDelete = false; // Otomatik silinmesin
+            x.ExchangeType = ExchangeType.Fanout; // Fanout exchange kullan覺ls覺n
+        });
+    });
+});
 
 
 
