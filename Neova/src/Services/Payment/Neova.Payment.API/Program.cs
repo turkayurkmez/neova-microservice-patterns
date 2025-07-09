@@ -1,5 +1,5 @@
 using MassTransit;
-using Neova.Stock.API.Consumers;
+using Neova.Payment.API.Consumers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,9 +10,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+
 builder.Services.AddMassTransit(configurator =>
 {
-    configurator.AddConsumer<OrderCreatedEventConsumer>();
+    configurator.AddConsumer<StockAvailableEventConsumer>();
     configurator.UsingRabbitMq((context, cfg) =>
     {
         cfg.Host("localhost", "/", h =>

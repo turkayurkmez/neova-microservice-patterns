@@ -1,5 +1,6 @@
 ﻿using MassTransit;
 using Neova.Orders.API.Consumers;
+using Neova.Shared.EventBus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +34,17 @@ builder.Services.AddMassTransit(configurator =>
 
 
     });
+
+    configurator.AddConsumer<PaymentSuccessEventConsumer>();
+    configurator.AddConsumer<PaymentFailedEventConsumer>();
+    configurator.AddConsumer<StockNotAvilableEventConsumer>();
+
+    /*
+     * 
+     * https://microservices.io/patterns/data/saga.html
+     */
+
+
     configurator.UsingRabbitMq((context, cfg) =>
     {
         cfg.Host("localhost", "/", h =>
@@ -45,6 +57,8 @@ builder.Services.AddMassTransit(configurator =>
         {
             e.ConfigureConsumer<OrderProductPriceDiscountConsumer>(context);
         });
+
+        cfg.ConfigureEndpoints(context);
     });
 
     /*
