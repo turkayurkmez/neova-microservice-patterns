@@ -8,8 +8,8 @@ POST {{Neova.Catalog.API_HostAddress}}/api/products/discount
 Content-Type: application/json
 
 {
-  "producId": "1521c8c5-9859-4d55-a782-08949f92325a",
-  "discountRate": 0.15
+  "producId": "dca71cbc-83ea-4eda-b719-d814e86d3e52",
+  "discountRate": 0.10
 }
 
 

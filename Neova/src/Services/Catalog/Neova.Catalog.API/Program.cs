@@ -33,6 +33,19 @@ builder.Services.AddApplicationServices();
 
 builder.Services.AddMassTransit(configurator=> 
 {
+/*
+  * Eğer göndeerici, rabbitmq'ya hiç gönderilemezse...; son olaylar db'ye kaydedilecek ve uygulama yeniden başlatıldığında bu olaylar tekrar publish edilecek. Bu pattern'a "Outbox Pattern" denir.*/
+
+configurator.AddEntityFrameworkOutbox<CatalogDbContext>(o =>
+    {
+        o.UseSqlServer();
+        o.UseBusOutbox(); // Outbox kullanmak için bu satırı ekliyoruz
+        o.QueryDelay = TimeSpan.FromSeconds(120); // Outbox sorgu gecikmesi
+
+
+    });
+
+
     configurator.UsingRabbitMq((context, cfg) =>
     {
         cfg.Host("localhost", "/", h =>
@@ -47,6 +60,14 @@ builder.Services.AddMassTransit(configurator=>
             x.AutoDelete = false; // Otomatik silinmesin
             x.ExchangeType = ExchangeType.Fanout; // Fanout exchange kullanılsın
         });
+
+        /*
+ * 
+ * Aynı sorun için başka bir çözüm ise "Dead Letter Queue" kullanmaktır.
+ * https://aws.amazon.com/what-is/dead-letter-queue/
+ */
+
+
     });
 });
 

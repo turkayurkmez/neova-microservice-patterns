@@ -17,6 +17,4 @@ namespace Neova.Shared.EventBus
         public DateTime CreationDate { get; private set; }
 
     }
-
-    public record ProductPriceDiscountedEvent(Guid ProductId, decimal OldPrice, decimal NewPrice) : IntegrationEvent;
 }

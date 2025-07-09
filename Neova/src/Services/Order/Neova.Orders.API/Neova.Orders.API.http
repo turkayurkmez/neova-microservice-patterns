@@ -1,0 +1,6 @@
+@Neova.Orders.API_HostAddress = http://localhost:5152
+
+GET {{Neova.Orders.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -31,7 +31,8 @@ namespace Neova.Catalog.Infrastructure.EventHandlers
 
             await publishEndpoint.Publish(@event, cancellationToken);
 
-           
+
+
         }
     }
 }

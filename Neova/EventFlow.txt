@@ -1,0 +1,13 @@
+﻿Sipariş süreci için olay akışı:
+
+## HAPPY PATH
+1. Sipariş microservisine sipariş bilgileri gönderilir.
+2. Stok microservisi, siparişteki ünülerin stokta olup olmadığını kontrol eder.
+3. Eğer stokta yeterli miktarda ürün varsa, ödeme microservisine ödeme bilgileri gönderilir.
+4. Ödeme microservisi, ödeme işlemini gerçekleştirir ve order microservisine ödeme onayı gönderir.
+
+## UNHAPPY PATH
+1. Sipariş microservisine sipariş bilgileri gönderilir.
+2. Stok microservisi, siparişteki ürünlerin stokta olup olmadığını kontrol eder.
+3. Eğer stokta yeterli miktarda ürün yoksa, sipariş microservisine stok yetersizliği bilgisi gönderilir.
+4. Eğer ödeme yapılamazsa, sipariş microservisine ödeme hatası bilgisi gönderilir.

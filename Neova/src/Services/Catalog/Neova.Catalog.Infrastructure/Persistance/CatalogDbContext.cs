@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using MassTransit;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Neova.Catalog.Domain.Aggregates;
 using Neova.Shared.Library.Domain;
@@ -50,6 +51,11 @@ namespace Neova.Catalog.Infrastructure.Persistance
                 new Product("Koltuk Takımı", "Konforlu koltuk takımı", 2999.99m, 20, "sofa.png", 3)
             );
 
+            modelBuilder.AddInboxStateEntity();
+            modelBuilder.AddOutboxMessageEntity();
+            modelBuilder.AddOutboxStateEntity();
+
+
 
 
 
@@ -67,12 +73,12 @@ namespace Neova.Catalog.Infrastructure.Persistance
                 .SelectMany(e => e.Entity.DomainEvents)
                 .ToList();
 
-            
+
             var output = await base.SaveChangesAsync(cancellationToken);
             //2. domain eventleri publish et.
             foreach (var domainEvent in domainEvents)
             {
-               await mediator.Publish(domainEvent, cancellationToken);
+                await mediator.Publish(domainEvent, cancellationToken);
             }
 
             return output;
