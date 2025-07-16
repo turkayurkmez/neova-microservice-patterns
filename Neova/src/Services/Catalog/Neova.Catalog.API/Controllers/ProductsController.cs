@@ -30,7 +30,7 @@ namespace Neova.Catalog.API.Controllers
         //Fiyat indirimi için bir endpoint ekleyelim:
 
         [HttpPost("discount")]
-        public async Task<IActionResult> DiscountProductPrice([FromBody] DiscountProductPriceCommandRequest request)
+        public async Task<IActionResult> DiscountProductPrice(DiscountProductPriceCommandRequest request)
         {
           
             var response = await mediator.Send(request);

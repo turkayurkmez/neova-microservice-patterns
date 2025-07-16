@@ -27,6 +27,11 @@ namespace Neova.Catalog.Application.Features.Product.Commands
             {
                 return new DiscountProductPriceCommandResponse(false, "Ürün bulunamadı");
             }
+
+            //product.Price = product.Price - (product.Price * request.DiscountRate);
+
+            //müşteri, "satıcı üründe indirim uyygulayabilir" diyorsa:
+            //ubliquitous language: product.ApplyDiscount(request.DiscountRate);
             product.ApplyDiscount(request.DiscountRate);
             await productRepository.UpdateAsync(product);
 

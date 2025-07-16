@@ -41,10 +41,20 @@ namespace Neova.Catalog.Domain.Aggregates
             var oldPrice = Price;
             Price = Price * (1 - discountRate);
 
-            //Olayı oluştur ve fırlatmak üzere ekle:
+            //Olayı oluştur ve daha sonra fırlatmak üzere ekle:
             ProductPriceDiscountedDomainEvent @event = new ProductPriceDiscountedDomainEvent(this.Id, oldPrice, Price);
             AddDomainEvent(@event);
 
         }
+
+        /*
+         * Ürünün diğer olayları da olabilir. Örneğin:
+         * 
+         * Ürün resmi yüklendiğinde,
+         * Yeni bir kategoriye eklendiğinde,
+         * Açıklama metni değiştiğinde,
+         * Rating (puanlama) yapıldığında,
+         * 
+         */
     }
 }
