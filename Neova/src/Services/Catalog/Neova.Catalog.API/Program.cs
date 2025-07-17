@@ -1,14 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MassTransit;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Neova.Catalog.Application.Features.Product.Queries.GetAllProducts;
 using Neova.Catalog.Domain.Repositories;
 using Neova.Catalog.Infrastructure.EventHandlers;
+using Neova.Catalog.Infrastructure.Extensions;
 using Neova.Catalog.Infrastructure.Persistance;
 using Neova.Catalog.Infrastructure.Repositories;
-using Neova.Catalog.Infrastructure.Extensions;
-using RabbitMQ.Client;
-using MassTransit;
 using Neova.Shared.EventBus;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using RabbitMQ.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +20,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var connectionString = builder.Configuration.GetConnectionString("CatalogDb");
+var defaultHost = builder.Configuration["DefaultHost"];
+var defaultPass = builder.Configuration["DefaultPass"];
+connectionString = connectionString.Replace("[HOST]", defaultHost);
+connectionString = connectionString.Replace("[PASS]", defaultPass);
+
+
 builder.Services.AddInfrastructureServices(builder.Configuration);
+
+
 builder.Services.AddApplicationServices();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -92,6 +102,8 @@ configurator.AddEntityFrameworkOutbox<CatalogDbContext>(o =>
 
 
 var app = builder.Build();
+
+app.Logger.LogInformation("DİKKAT!!!!:  " + connectionString);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
