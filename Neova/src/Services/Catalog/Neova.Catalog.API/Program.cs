@@ -8,6 +8,7 @@ using Neova.Catalog.Infrastructure.Extensions;
 using RabbitMQ.Client;
 using MassTransit;
 using Neova.Shared.EventBus;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,22 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddApplicationServices();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(option =>
+                {
+                    option.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = "Neova.Identity.API",
+                        ValidAudience = "catalog",
+                        IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("burasi_guvenlik_icin_cok_kritik_en_az_128_bit")) // Güvenlik anahtarınızı buraya girin
+                    };
+
+                });
 
 //builder.Services.AddScoped<IProductRepository, ProductEFRepository>();
 //builder.Services.AddMediatR(config =>
@@ -82,6 +99,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

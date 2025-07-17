@@ -1,0 +1,30 @@
+@Neova.ApiGateway.YARP_HostAddress = http://localhost:5058
+
+GET {{Neova.ApiGateway.YARP_HostAddress}}/products/
+Accept: application/json
+
+###
+
+POST {{Neova.ApiGateway.YARP_HostAddress}}/products/discount
+Content-Type: application/json
+
+{
+  "producId": "dca71cbc-83ea-4eda-b719-d814e86d3e52",
+  "discountRate": 0.10
+}
+
+###
+
+POST {{Neova.ApiGateway.YARP_HostAddress}}/orders
+Content-Type: application/json
+{
+  "customerId": "c1b2a3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6",
+  "orderItems": [
+    {
+      "productId": "dca71cbc-83ea-4eda-b719-d814e86d3e52",
+      "quantity": 2,
+      "price": 19.99
+    }
+  ]
+}
+

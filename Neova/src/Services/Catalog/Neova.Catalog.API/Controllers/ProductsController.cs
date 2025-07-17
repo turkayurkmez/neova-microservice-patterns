@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Neova.Catalog.Application.Features.Product.Commands;
@@ -30,6 +31,7 @@ namespace Neova.Catalog.API.Controllers
         //Fiyat indirimi için bir endpoint ekleyelim:
 
         [HttpPost("discount")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> DiscountProductPrice(DiscountProductPriceCommandRequest request)
         {
           

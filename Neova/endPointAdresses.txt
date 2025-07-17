@@ -1,0 +1,6 @@
+
+
+ADRES                             endPoints                           VERBS
+http://localhost:5200             /api/products                           GET
+http://localhost:5200             /api/products/discount                  POST
+http://localhost:5202             /api/orders                             POST

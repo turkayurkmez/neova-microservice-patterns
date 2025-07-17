@@ -33,6 +33,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neova.Orders.API", "src\Ser
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notes", "Notes", "{9367D7DC-47EB-4938-9B16-67B6F62B8BA1}"
 	ProjectSection(SolutionItems) = preProject
+		endPointAdresses.txt = endPointAdresses.txt
 		EventFlow.txt = EventFlow.txt
 	EndProjectSection
 EndProject
@@ -43,6 +44,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neova.Stock.API", "src\Services\Stock\Neova.Stock.API\Neova.Stock.API.csproj", "{44FFAA88-A395-4943-A0FA-4CE3E8F245AC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neova.Payment.API", "src\Services\Payment\Neova.Payment.API\Neova.Payment.API.csproj", "{01F51873-F75F-4BEE-851E-AC0078CB6A1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neova.Identity.API", "src\Services\Identity\Neova.Identity.API\Neova.Identity.API.csproj", "{D71B4C36-BB1F-4C49-91D7-3000A781EEE7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateways", "ApiGateways", "{5DD448E7-48A3-48A5-9F57-47256A611C89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neova.ApiGateway.YARP", "src\ApiGateways\Neova.ApiGateway.YARP\Neova.ApiGateway.YARP.csproj", "{061040CB-9FC6-4B20-A8B1-1CA48AB50FA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -90,6 +97,14 @@ Global
 		{01F51873-F75F-4BEE-851E-AC0078CB6A1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01F51873-F75F-4BEE-851E-AC0078CB6A1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01F51873-F75F-4BEE-851E-AC0078CB6A1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D71B4C36-BB1F-4C49-91D7-3000A781EEE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D71B4C36-BB1F-4C49-91D7-3000A781EEE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D71B4C36-BB1F-4C49-91D7-3000A781EEE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D71B4C36-BB1F-4C49-91D7-3000A781EEE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{061040CB-9FC6-4B20-A8B1-1CA48AB50FA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{061040CB-9FC6-4B20-A8B1-1CA48AB50FA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{061040CB-9FC6-4B20-A8B1-1CA48AB50FA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{061040CB-9FC6-4B20-A8B1-1CA48AB50FA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,6 +127,9 @@ Global
 		{DD4D4C17-D90B-4A7D-9EAA-EBB00275D18B} = {B3BBEB05-BED3-4CB9-AC4C-5782644FF136}
 		{44FFAA88-A395-4943-A0FA-4CE3E8F245AC} = {1D589C95-8B2F-4178-82C7-910162F8B200}
 		{01F51873-F75F-4BEE-851E-AC0078CB6A1B} = {DD4D4C17-D90B-4A7D-9EAA-EBB00275D18B}
+		{D71B4C36-BB1F-4C49-91D7-3000A781EEE7} = {B3BBEB05-BED3-4CB9-AC4C-5782644FF136}
+		{5DD448E7-48A3-48A5-9F57-47256A611C89} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{061040CB-9FC6-4B20-A8B1-1CA48AB50FA2} = {5DD448E7-48A3-48A5-9F57-47256A611C89}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2BC0BB02-77EC-4854-85FB-E717FCF88017}
