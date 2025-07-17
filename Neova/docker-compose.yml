@@ -1,0 +1,88 @@
+services:
+  ms-sql-server:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: ms_sql_server
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourStrong@Passw0rd
+    ports:
+      - "1433:1433"  
+    healthcheck:
+        test: ["CMD","/opt/mssql-tools/bin/sqlcmd", "-U", "sa", "-P", "YourStrong@Passw0rd", "-Q", "SELECT 1"]
+        interval: 30s
+        timeout: 10s
+        retries: 5 
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"  
+      - "15672:15672"  
+    healthcheck:
+        test: ["CMD", "rabbitmq-diagnostics", "status"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
+  
+    
+
+
+  neova.apigateway.yarp:
+    image: ${DOCKER_REGISTRY-}neovaapigatewayyarp
+    build:
+      context: .
+      dockerfile: src/ApiGateways/Neova.ApiGateway.YARP/Dockerfile
+
+  neova.basket.api:
+    image: ${DOCKER_REGISTRY-}neovabasketapi
+    build:
+      context: .
+      dockerfile: src/Services/Basket/Neova.Basket.API/Dockerfile
+    depends_on:   
+      - rabbitmq
+
+
+  neova.catalog.api:
+    image: ${DOCKER_REGISTRY-}neovacatalogapi
+    build:
+      context: .
+      dockerfile: src/Services/Catalog/Neova.Catalog.API/Dockerfile
+    depends_on:   
+      - ms-sql-server
+      - rabbitmq
+    environment:
+        - DefaultHost="ms-sql-server",
+        - DefaultPass="YourStrong@Passw0rd"
+        
+       
+    
+
+
+  neova.orders.api:
+    image: ${DOCKER_REGISTRY-}neovaordersapi
+    build:
+      context: .
+      dockerfile: src/Services/Order/Neova.Orders.API/Dockerfile
+
+
+  neova.payment.api:
+    image: ${DOCKER_REGISTRY-}neovapaymentapi
+    build:
+      context: .
+      dockerfile: src/Services/Payment/Neova.Payment.API/Dockerfile
+
+
+  neova.stock.api:
+    image: ${DOCKER_REGISTRY-}neovastockapi
+    build:
+      context: .
+      dockerfile: src/Services/Stock/Neova.Stock.API/Dockerfile
+
+
+  neova.identity.api:
+    image: ${DOCKER_REGISTRY-}neovaidentityapi
+    build:
+      context: .
+      dockerfile: src/Services/Identity/Neova.Identity.API/Dockerfile
+

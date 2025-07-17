@@ -19,7 +19,12 @@ namespace Neova.Catalog.Infrastructure.Extensions
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
           services.AddScoped<IProductRepository, ProductEFRepository>();
-           services.AddDbContext<CatalogDbContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("CatalogDb")));
+            var connectionString = configuration.GetConnectionString("CatalogDb");
+            connectionString = connectionString.Replace("[HOST]", configuration["DefaultHost"]);
+            connectionString = connectionString.Replace("[PASS]", configuration["DefaultPass"]);
+
+
+            services.AddDbContext<CatalogDbContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("CatalogDb")));
 
             return services;
         }

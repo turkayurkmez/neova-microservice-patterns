@@ -65,7 +65,8 @@ configurator.AddEntityFrameworkOutbox<CatalogDbContext>(o =>
 
     configurator.UsingRabbitMq((context, cfg) =>
     {
-        cfg.Host("localhost", "/", h =>
+        var rabbitMqHost = builder.Configuration.GetValue<string>("DefaultMQ") ?? "localhost";
+        cfg.Host(rabbitMqHost, "/", h =>
         {
             h.Username("guest");
             h.Password("guest");

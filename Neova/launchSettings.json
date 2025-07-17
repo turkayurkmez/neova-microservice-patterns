@@ -1,0 +1,17 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "neova.apigateway.yarp": "StartDebugging",
+        "neova.basket.api": "StartDebugging",
+        "neova.catalog.api": "StartDebugging",
+        "neova.orders.api": "StartDebugging",
+        "neova.payment.api": "StartDebugging",
+        "neova.stock.api": "StartDebugging",
+        "neova.identity.api": "StartDebugging"
+      }
+    }
+  }
+}
