@@ -104,4 +104,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+await DatabaseInitializer.CreateDatabaseAsync(app);
+
 app.Run();
